@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80dd804d5185824a87613587576170b, type: 3}
+  m_Name: 7DaysCalendar
+  m_EditorClassIdentifier: 
+  calendarName: Weekly
+  duration: 7
+  rewards:
+  - reward: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 100
+  - reward: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 100
+  - reward: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 150
+  - reward: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 200
+  - reward: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 250
+  - reward: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 500
+  - reward: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}
+    quantity: 1

@@ -12,66 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80dd804d5185824a87613587576170b, type: 3}
   m_Name: 30DaysCalendar
   m_EditorClassIdentifier: 
+  calendarID: DC_30_November_2025
   calendarName: Monthly Calendar
-  duration: 30
+  duration: 3
   rewards:
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
-  - reward: {fileID: 0}
-    quantity: 0
+  - reward: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 11
+  - reward: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 11
+  - reward: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}
+    quantity: 11

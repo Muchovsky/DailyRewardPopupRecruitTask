@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80dd804d5185824a87613587576170b, type: 3}
   m_Name: 7DaysCalendar
   m_EditorClassIdentifier: 
+  calendarID: DC_7_1
   calendarName: Weekly
   duration: 7
   rewards:

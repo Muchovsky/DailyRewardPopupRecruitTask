@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80dd804d5185824a87613587576170b, type: 3}
   m_Name: AdventCalendar
   m_EditorClassIdentifier: 
+  calendarID: AC_2025
   calendarName: Advent Calendar
   duration: 24
   rewards:

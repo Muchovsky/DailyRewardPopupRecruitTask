@@ -1,10 +1,12 @@
 using System;
+using UnityEngine;
 
 public class CalendarController
 {
     CalendarDefinition calendarDefinition;
     SaveService saveService;
     CalendarState calendarState;
+    int dayOffset = 0;
 
 
     public CalendarController(CalendarDefinition calendarDefinition, SaveService saveService)
@@ -41,7 +43,8 @@ public class CalendarController
     public int GetCurrentDayIndex()
     {
         DateTime start = DateTime.Parse(calendarState.startDate);
-        return (DateTime.Today - start).Days;
+        var currentDay = (DateTime.UtcNow.Date - start).Days + dayOffset;
+        return Mathf.Clamp(currentDay, 0, calendarDefinition.Duration - 1);
     }
 
     public bool CanClaimDay(int day)
@@ -67,5 +70,15 @@ public class CalendarController
     public RewardQuantityPair GetRewardForDay(int day)
     {
         return calendarDefinition.Rewards[day];
+    }
+
+    public void SimulateDayPass()
+    {
+        dayOffset++;
+    }
+
+    public void ResetDayOffset()
+    {
+        dayOffset = 0;
     }
 }

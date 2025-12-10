@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CalendarUI : MonoBehaviour
@@ -44,7 +42,8 @@ public class CalendarUI : MonoBehaviour
             var diff = calendarLength - rewardList.Count;
             for (int i = 0; i < diff; i++)
             {
-                Instantiate(rewardPrefab, rewardContainer.transform, false);
+                var prefab = Instantiate(rewardPrefab, rewardContainer.transform, false);
+                rewardList.Add(prefab);
             }
 
             return;
@@ -60,5 +59,17 @@ public class CalendarUI : MonoBehaviour
             var reward = calendarController.GetRewardForDay(i);
             rewardList[i].Init(reward, claimStatus, canBeClaimed);
         }
+    }
+
+    public void SimulateNextDay()
+    {
+        calendarController.SimulateDayPass();
+        SetRewards();
+    }
+
+    public void RestoreCalendar()
+    {
+        calendarController.ResetDayOffset();
+        SetRewards();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,13 @@ public class CalendarUI : MonoBehaviour
     public void Init()
     {
         SetRewardPrefabs();
+
+        for (int i = 0; i < rewardList.Count; i++)
+        {
+            int index = i;
+            rewardList[i].Init(index);
+            rewardList[i].OnClicked += OnDayClicked;
+        }
     }
 
     void Start()
@@ -28,7 +36,6 @@ public class CalendarUI : MonoBehaviour
         var calendarLength = calendarController.CalendarLength();
         if (calendarLength < rewardList.Count)
         {
-            var diff = rewardList.Count - calendarLength;
             for (int i = calendarLength; i < rewardList.Count; i++)
             {
                 rewardList[i].gameObject.SetActive(false);
@@ -45,8 +52,6 @@ public class CalendarUI : MonoBehaviour
                 var prefab = Instantiate(rewardPrefab, rewardContainer.transform, false);
                 rewardList.Add(prefab);
             }
-
-            return;
         }
     }
 
@@ -54,11 +59,22 @@ public class CalendarUI : MonoBehaviour
     {
         for (var i = 0; i < calendarController.CalendarLength(); i++)
         {
-            bool claimStatus = calendarController.IsDayClaimed(i);
-            bool canBeClaimed = calendarController.CanClaimDay(i);
-            var reward = calendarController.GetRewardForDay(i);
-            rewardList[i].Init(reward, claimStatus, canBeClaimed);
+            SetReward(i);
         }
+    }
+
+    void SetReward(int i)
+    {
+        bool claimStatus = calendarController.IsDayClaimed(i);
+        bool canBeClaimed = calendarController.CanClaimDay(i);
+        var reward = calendarController.GetRewardForDay(i);
+        rewardList[i].UpdateView(reward, claimStatus, canBeClaimed);
+    }
+
+    void OnDayClicked(int day)
+    {
+        calendarController.ClaimDay(day);
+        SetReward(day);
     }
 
     public void SimulateNextDay()
@@ -71,5 +87,13 @@ public class CalendarUI : MonoBehaviour
     {
         calendarController.ResetDayOffset();
         SetRewards();
+    }
+
+    void OnDestroy()
+    {
+        foreach (var dailyReward in rewardList)
+        {
+            dailyReward.OnClicked -= OnDayClicked;
+        }
     }
 }

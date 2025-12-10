@@ -6,7 +6,7 @@ public class CalendarController
     CalendarDefinition calendarDefinition;
     SaveService saveService;
     CalendarState calendarState;
-    int dayOffset = 0;
+    int dayOffset;
 
 
     public CalendarController(CalendarDefinition calendarDefinition, SaveService saveService)
@@ -35,12 +35,13 @@ public class CalendarController
 
     public void ClaimDay(int day)
     {
+        if (!CanClaimDay(day)) return;
         calendarState.claimedDays.Add(day);
         calendarState.lastClaimDate = DateTime.Today.ToString("dd-MM-yyy");
         saveService.SetCalendarStatus(calendarState);
     }
 
-    public int GetCurrentDayIndex()
+    int GetCurrentDayIndex()
     {
         DateTime start = DateTime.Parse(calendarState.startDate);
         var currentDay = (DateTime.UtcNow.Date - start).Days + dayOffset;

@@ -11,15 +11,16 @@ public class DailyReward : MonoBehaviour
     [SerializeField] Image claimedImage;
     [SerializeField] Button claimButton;
     int day;
-    
+
     public event Action<int> OnClicked;
-    
+
     public void Init(int day)
     {
         this.day = day;
         claimButton.onClick.AddListener(RewardClick);
-        dayLabel.text = $"Day {day.ToString()}";
+        dayLabel.text = $"Day {(day + 1).ToString()}";
     }
+
     public void UpdateView(Reward pair, bool claimStatus, bool canBeClaimed)
     {
         claimedImage.gameObject.SetActive(claimStatus);
@@ -33,6 +34,4 @@ public class DailyReward : MonoBehaviour
         OnClicked?.Invoke(day);
         //PlaySound??
     }
-
-    
 }

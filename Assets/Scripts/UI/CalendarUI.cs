@@ -1,13 +1,18 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CalendarUI : MonoBehaviour
 {
     [SerializeField] List<DailyReward> rewardList;
     [SerializeField] DailyReward rewardPrefab;
     [SerializeField] GameObject rewardContainer;
+    [SerializeField] Button closeButton;
+    [SerializeField] GridLayoutGroup gridLayoutGroup;
+
     CalendarController calendarController;
+    [Header("Cheats")] [SerializeField] Button nextDayButton;
+    [SerializeField] Button restoreButton;
 
     public void Construct(CalendarController controller)
     {
@@ -16,6 +21,9 @@ public class CalendarUI : MonoBehaviour
 
     public void Init()
     {
+        var prefabRect = rewardPrefab.GetComponent<RectTransform>();
+        gridLayoutGroup.cellSize = prefabRect.sizeDelta;
+
         SetRewardPrefabs();
 
         for (int i = 0; i < rewardList.Count; i++)
@@ -24,11 +32,15 @@ public class CalendarUI : MonoBehaviour
             rewardList[i].Init(index);
             rewardList[i].OnClicked += OnDayClicked;
         }
+
+        SetButtons();
     }
 
     void Start()
     {
         SetRewards();
+       // LayoutRebuilder.ForceRebuildLayoutImmediate(gridLayoutGroup.GetComponent<RectTransform>());
+        //gridLayoutGroup.enabled = false;
     }
 
     void SetRewardPrefabs()
@@ -77,16 +89,33 @@ public class CalendarUI : MonoBehaviour
         SetReward(day);
     }
 
-    public void SimulateNextDay()
+    void SimulateNextDay()
     {
         calendarController.SimulateDayPass();
         SetRewards();
     }
 
-    public void RestoreCalendar()
+    void RestoreCalendar()
     {
         calendarController.ResetDayOffset();
         SetRewards();
+    }
+
+    public void OpenWindow()
+    {
+        gameObject.SetActive(true);
+    }
+
+    void CloseWindow()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void SetButtons()
+    {
+        closeButton.onClick.AddListener(CloseWindow);
+        nextDayButton.onClick.AddListener(SimulateNextDay);
+        restoreButton.onClick.AddListener(RestoreCalendar);
     }
 
     void OnDestroy()

@@ -14,11 +14,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   calendarID: DC_30_November_2025
   calendarName: Monthly Calendar
-  duration: 3
+  duration: 30
   rewards:
-  - reward: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
-    quantity: 11
-  - reward: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
-    quantity: 11
-  - reward: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}
-    quantity: 11
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 110
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 50
+  - currency: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}
+    quantity: 1
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 123
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 213
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 432
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 222
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 555
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 434
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 456
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 55555
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 767
+  - currency: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}
+    quantity: 2
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 3480
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 675
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 4838
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 2984
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 999
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 2312
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 853
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 1892
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 37
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 3333
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 745
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 3543
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 333
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 3353
+  - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
+    quantity: 4353
+  - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
+    quantity: 54354
+  - currency: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}
+    quantity: 99

@@ -6,7 +6,7 @@ public class GameContext : MonoBehaviour
 {
     [Header("Calendar")] [SerializeField] List<CalendarUIBind> calendars;
 
-    [Header("Currency")] //[SerializeField] List<CurrencyUI> currencyViews;
+    [Header("Currency")] 
     [SerializeField]
     List<CurrencyUIBind> currencies;
 

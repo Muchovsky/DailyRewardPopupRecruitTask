@@ -7,6 +7,7 @@ public class DailyReward : MonoBehaviour
 {
     [SerializeField] Image rewardImage;
     [SerializeField] TextMeshProUGUI rewardQuantity;
+    [SerializeField] TextMeshProUGUI dayLabel;
     [SerializeField] Image claimedImage;
     [SerializeField] Button claimButton;
     int day;
@@ -17,11 +18,12 @@ public class DailyReward : MonoBehaviour
     {
         this.day = day;
         claimButton.onClick.AddListener(RewardClick);
+        dayLabel.text = $"Day {day.ToString()}";
     }
-    public void UpdateView(RewardQuantityPair pair, bool claimStatus, bool canBeClaimed)
+    public void UpdateView(Reward pair, bool claimStatus, bool canBeClaimed)
     {
         claimedImage.gameObject.SetActive(claimStatus);
-        rewardImage.sprite = pair.Reward.Sprite;
+        rewardImage.sprite = pair.Currency.Sprite;
         rewardQuantity.text = pair.Quantity.ToString();
         claimButton.interactable = canBeClaimed;
     }

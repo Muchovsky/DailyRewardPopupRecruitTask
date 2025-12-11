@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a0eb11879f7bc46b330c8acb0b8bda, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
-  rewardName: Key
+  currencyName: 2
   sprite: {fileID: 21300000, guid: 4dc8dd93b124114419be4a33fda9e272, type: 3}
-  quantity: 0

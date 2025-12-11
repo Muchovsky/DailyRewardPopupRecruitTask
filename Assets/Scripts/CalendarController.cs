@@ -8,6 +8,8 @@ public class CalendarController
     CalendarState calendarState;
     int dayOffset;
 
+    public event Action<Reward> OnDayRewardClaim;
+
 
     public CalendarController(CalendarDefinition calendarDefinition, SaveService saveService)
     {
@@ -39,6 +41,8 @@ public class CalendarController
         calendarState.claimedDays.Add(day);
         calendarState.lastClaimDate = DateTime.Today.ToString("dd-MM-yyy");
         saveService.SetCalendarStatus(calendarState);
+
+        OnDayRewardClaim?.Invoke(GetRewardForDay(day));
     }
 
     int GetCurrentDayIndex()
@@ -68,7 +72,7 @@ public class CalendarController
         return calendarDefinition.Duration;
     }
 
-    public RewardQuantityPair GetRewardForDay(int day)
+    public Reward GetRewardForDay(int day)
     {
         return calendarDefinition.Rewards[day];
     }

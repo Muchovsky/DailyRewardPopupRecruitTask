@@ -9,15 +9,23 @@ public class SaveService
     string GetClaimedKey(string id) => id + "_CLAIMED";
     string GetLastDayKey(string id) => id + "_LAST";
 
-    public int GetRewardsCount(string rewardName)
+    public int GetCurrencyAmount(string currencyName)
     {
-        return PlayerPrefs.GetInt(rewardName, 0);
+        return PlayerPrefs.GetInt(currencyName, 0);
     }
 
-    public void SetRewardsCount(string rewardName, int value)
+    public void SetCurrencyAmount(string currencyName, int value)
     {
-        PlayerPrefs.SetInt(rewardName, value);
+        PlayerPrefs.SetInt(currencyName, value);
         PlayerPrefs.Save();
+    }
+
+    public void UpdateCurrencyAmount(CurrencyNameEnum currencyNameEnum, int increaseBy)
+    {
+        string currencyName = currencyNameEnum.ToString();
+        var currentAmount = PlayerPrefs.GetInt(currencyName, 0);
+        var newAmount = currentAmount + increaseBy;
+        PlayerPrefs.SetInt(currencyName, newAmount);
     }
 
     public CalendarState GetCalendarStatus(string calendarID)

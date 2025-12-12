@@ -7,16 +7,19 @@ using UnityEngine.UI;
 
 public class CalendarUI : MonoBehaviour
 {
+    [SerializeField] Button closeButton;
+
     [SerializeField] List<DailyReward> rewardList;
     [SerializeField] DailyReward rewardPrefab;
     [SerializeField] GameObject rewardContainer;
-    [SerializeField] Button closeButton;
+    
     [SerializeField] GridLayoutGroup gridLayoutGroup;
     [SerializeField] ContentSizeFitter contentSizeFitter;
-    CalendarController calendarController;
+    [SerializeField] ScrollRect scroll;
     [Header("Cheats")] [SerializeField] Button nextDayButton;
     [SerializeField] Button restoreButton;
 
+    CalendarController calendarController;
 
     public void Construct(CalendarController controller)
     {
@@ -52,6 +55,7 @@ public class CalendarUI : MonoBehaviour
         yield return new WaitForEndOfFrame();
         gridLayoutGroup.enabled = false;
         contentSizeFitter.enabled = false;
+        scroll.verticalNormalizedPosition = 1;
     }
 
     void SetRewardPrefabs()

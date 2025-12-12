@@ -120,8 +120,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7524504533879685967}
   m_HandleRect: {fileID: 3829624710467797083}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -504,6 +504,7 @@ MonoBehaviour:
   rewardContainer: {fileID: 3719086814436871643}
   closeButton: {fileID: 8245561475274741040}
   gridLayoutGroup: {fileID: 770216925032295629}
+  contentSizeFitter: {fileID: 4473623790122170837}
   nextDayButton: {fileID: 1808254367219399552}
   restoreButton: {fileID: 3211140446266732681}
 --- !u!223 &6772228040382911228

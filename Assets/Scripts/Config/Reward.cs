@@ -10,4 +10,5 @@ public class Reward
 
     public CurrencyDefinition Currency => currency;
     public int Quantity => quantity;
+    
 }

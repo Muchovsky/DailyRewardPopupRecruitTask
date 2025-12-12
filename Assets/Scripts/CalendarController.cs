@@ -24,7 +24,8 @@ public class CalendarController
 
         if (string.IsNullOrEmpty(calendarState.startDate))
         {
-            calendarState.startDate = DateTime.Today.ToString("dd-MM-yyy");
+            calendarState.startDate = calendarDefinition.StartDate ?? DateTime.Today.ToString("dd-MM-yyy");
+
             calendarState.lastClaimDate = "";
             saveService.SetCalendarStatus(calendarState);
         }
@@ -62,6 +63,14 @@ public class CalendarController
         if (day > GetCurrentDayIndex())
         {
             return false;
+        }
+
+        if (calendarDefinition.DisablePastDays)
+        {
+            if (day < GetCurrentDayIndex())
+            {
+                return false;
+            }
         }
 
         return true;

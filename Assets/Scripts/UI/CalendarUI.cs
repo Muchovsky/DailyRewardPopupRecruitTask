@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CalendarUI : MonoBehaviour
@@ -9,10 +12,11 @@ public class CalendarUI : MonoBehaviour
     [SerializeField] GameObject rewardContainer;
     [SerializeField] Button closeButton;
     [SerializeField] GridLayoutGroup gridLayoutGroup;
-
+    [SerializeField] ContentSizeFitter contentSizeFitter;
     CalendarController calendarController;
     [Header("Cheats")] [SerializeField] Button nextDayButton;
     [SerializeField] Button restoreButton;
+
 
     public void Construct(CalendarController controller)
     {
@@ -39,12 +43,32 @@ public class CalendarUI : MonoBehaviour
     void Start()
     {
         SetRewards();
-       // LayoutRebuilder.ForceRebuildLayoutImmediate(gridLayoutGroup.GetComponent<RectTransform>());
-        //gridLayoutGroup.enabled = false;
+        StartCoroutine(SetupGrid());
+    }
+
+
+    IEnumerator SetupGrid()
+    {
+        yield return new WaitForEndOfFrame();
+        gridLayoutGroup.enabled = false;
+        contentSizeFitter.enabled = false;
     }
 
     void SetRewardPrefabs()
     {
+        rewardList.RemoveAll(item => item == null);
+
+        foreach (Transform child in rewardContainer.transform)
+        {
+            var reward = child.GetComponent<DailyReward>();
+            if (reward != null)
+            {
+                rewardList.Add(reward);
+            }
+            else
+                child.gameObject.SetActive(false);
+        }
+
         var calendarLength = calendarController.CalendarLength();
         if (calendarLength < rewardList.Count)
         {

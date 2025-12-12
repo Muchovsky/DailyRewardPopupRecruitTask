@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class GameContext : MonoBehaviour
 {
-    [Header("Calendar")] [SerializeField] List<CalendarUIBind> calendars;
+    [FormerlySerializedAs("calendars")] [Header("Calendar")] [SerializeField] List<CalendarUIBind> calendarsBind;
 
-    [Header("Currency")] 
-    [SerializeField]
-    List<CurrencyUIBind> currencies;
+    [Header("Currency")] [SerializeField] List<CurrencyUIBind> currencies;
 
 
     SaveService saveService;
@@ -18,11 +18,13 @@ public class GameContext : MonoBehaviour
         saveService = new SaveService();
         var currencyController = new CurrencyController(saveService);
 
-        for (int i = 0; i < calendars.Count; i++)
+        for (int i = 0; i < calendarsBind.Count; i++)
         {
-            var calendarController = new CalendarController(calendars[i].calendar, saveService);
-            calendars[i].view.Construct(calendarController);
-            calendars[i].view.Init();
+            var calendarBind = calendarsBind[i];
+            var calendarController = new CalendarController(calendarBind.calendar, saveService);
+            calendarBind.view.Construct(calendarController);
+            calendarBind.view.Init();
+            calendarBind.button.onClick.AddListener(() => OpenWindow(calendarBind));
 
             calendarController.OnDayRewardClaim += reward => { currencyController.UpdateCurrencyAmount(reward); };
         }
@@ -33,7 +35,13 @@ public class GameContext : MonoBehaviour
             currencies[i].view.Init();
         }
     }
+
+    void OpenWindow(CalendarUIBind bind)
+    {
+        bind.view.OpenWindow();
+    }
 }
+
 
 [Serializable]
 public class CurrencyUIBind
@@ -47,4 +55,5 @@ public class CalendarUIBind
 {
     public CalendarUI view;
     public CalendarDefinition calendar;
+    public Button button;
 }

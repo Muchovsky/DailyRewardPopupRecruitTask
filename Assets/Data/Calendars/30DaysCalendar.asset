@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: 30DaysCalendar
   m_EditorClassIdentifier: 
   calendarID: DC_30_November_2025
+  customStartDate: 0
+  startDate: 
+  disablePastDays: 0
   calendarName: Monthly Calendar
   duration: 30
   rewards:

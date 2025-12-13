@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DailyReward : MonoBehaviour
+public class DailyRewardUI : MonoBehaviour
 {
     [SerializeField] Image rewardImage;
     [SerializeField] TextMeshProUGUI rewardQuantity;

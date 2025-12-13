@@ -1,26 +1,38 @@
-using System;
-
 public class CurrencyController
 {
-    SaveService saveService;
+    CurrencySaveService currencySaveService;
+    CurrencyUI currencyUI;
+    CurrencyDefinition currencyDefinition;
 
-    public event Action<CurrencyNameEnum> OnCurrencyChanged;
 
-    public CurrencyController(SaveService saveService)
+    public CurrencyController(CurrencySaveService currencySaveService, CurrencyUI currencyUI, CurrencyDefinition currencyDefinition, EventBus eventBus)
     {
-        this.saveService = saveService;
+        this.currencySaveService = currencySaveService;
+        this.currencyUI = currencyUI;
+        this.currencyDefinition = currencyDefinition;
+
+        var currentAmount = GetAmount(currencyDefinition.CurrencyName.ToString());
+        this.currencyUI.Init(currencyDefinition.Sprite, currentAmount.ToString());
+        eventBus.OnRewardClaimed += OnRewardClaimed;
     }
 
-    public int GetAmount(string currencyName)
+    int GetAmount(string currencyName)
     {
-        return saveService.GetCurrencyAmount(currencyName);
+        return currencySaveService.Load(currencyName);
+    }
+
+    void OnRewardClaimed(Reward reward)
+    {
+        if (reward.Currency.CurrencyName != currencyDefinition.CurrencyName)
+            return;
+
+        AddCurrency(reward.Quantity);
     }
 
 
-    public void UpdateCurrencyAmount(Reward reward)
+    void AddCurrency(int amount)
     {
-        saveService.UpdateCurrencyAmount(reward.Currency.CurrencyName, reward.Quantity);
-
-        OnCurrencyChanged?.Invoke(reward.Currency.CurrencyName);
+        currencySaveService.AddCurrencyAmount(currencyDefinition.CurrencyName, amount);
+        currencyUI.UpdateAmount(GetAmount(currencyDefinition.CurrencyName.ToString()));
     }
 }

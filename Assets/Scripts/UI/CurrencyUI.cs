@@ -6,28 +6,22 @@ public class CurrencyUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI currencyAmount;
     [SerializeField] Image currencyImage;
+
     CurrencyController currencyController;
-    CurrencyDefinition currencyDefinition;
 
-
-    public void Construct(CurrencyController controller, CurrencyDefinition currency)
+    public void Construct(CurrencyController controller)
     {
         currencyController = controller;
-        currencyDefinition = currency;
-        currencyController.OnCurrencyChanged += UpdateView;
     }
 
-    public void Init()
+    public void Init(Sprite sprite, string amount)
     {
-        UpdateView(currencyDefinition.CurrencyName);
-        currencyImage.sprite = currencyDefinition.Sprite;
+        currencyImage.sprite = sprite;
+        currencyAmount.text = amount;
     }
 
-    void UpdateView(CurrencyNameEnum currency)
+    public void UpdateAmount(int amount)
     {
-        if (currency == currencyDefinition.CurrencyName)
-        {
-            currencyAmount.text = currencyController.GetAmount(currency.ToString()).ToString();
-        }
+        currencyAmount.text = amount.ToString();
     }
 }

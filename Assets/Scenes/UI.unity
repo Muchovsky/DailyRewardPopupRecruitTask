@@ -817,7 +817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2781878769510153757, guid: 38204f1aa759b6e4cbe6eefeaa534c60, type: 3}
       propertyPath: m_Name
-      value: Currency
+      value: Gold
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1329,7 +1329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2781878769510153757, guid: 38204f1aa759b6e4cbe6eefeaa534c60, type: 3}
       propertyPath: m_Name
-      value: Currency (1)
+      value: Crystal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1447,7 +1447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2781878769510153757, guid: 38204f1aa759b6e4cbe6eefeaa534c60, type: 3}
       propertyPath: m_Name
-      value: Currency (2)
+      value: Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +7,12 @@ using UnityEngine.UI;
 public class CalendarUI : MonoBehaviour
 {
     [SerializeField] Button closeButton;
+    [SerializeField] List<DailyRewardUI> rewardList;
 
-    [SerializeField] List<DailyReward> rewardList;
-    [SerializeField] DailyReward rewardPrefab;
+    [FormerlySerializedAs("rewardPrefab")] [SerializeField]
+    DailyRewardUI rewardUIPrefab;
+
     [SerializeField] GameObject rewardContainer;
-    
     [SerializeField] GridLayoutGroup gridLayoutGroup;
     [SerializeField] ContentSizeFitter contentSizeFitter;
     [SerializeField] ScrollRect scroll;
@@ -28,10 +28,10 @@ public class CalendarUI : MonoBehaviour
 
     public void Init()
     {
-        var prefabRect = rewardPrefab.GetComponent<RectTransform>();
+        var prefabRect = rewardUIPrefab.GetComponent<RectTransform>();
         gridLayoutGroup.cellSize = prefabRect.sizeDelta;
 
-        SetRewardPrefabs();
+        SetRewardPrefabsList();
 
         for (int i = 0; i < rewardList.Count; i++)
         {
@@ -49,31 +49,23 @@ public class CalendarUI : MonoBehaviour
         StartCoroutine(SetupGrid());
     }
 
-
     IEnumerator SetupGrid()
     {
-        yield return new WaitForEndOfFrame();
+        yield return null;
         gridLayoutGroup.enabled = false;
         contentSizeFitter.enabled = false;
         scroll.verticalNormalizedPosition = 1;
     }
 
-    void SetRewardPrefabs()
+    void SetRewardPrefabsList()
     {
-        rewardList.RemoveAll(item => item == null);
+        RemoveEmptyElements();
+        AssignLoosePrefabs();
+        AdjustPrefabsCont(calendarController.CalendarLength());
+    }
 
-        foreach (Transform child in rewardContainer.transform)
-        {
-            var reward = child.GetComponent<DailyReward>();
-            if (reward != null)
-            {
-                rewardList.Add(reward);
-            }
-            else
-                child.gameObject.SetActive(false);
-        }
-
-        var calendarLength = calendarController.CalendarLength();
+    void AdjustPrefabsCont(int calendarLength)
+    {
         if (calendarLength < rewardList.Count)
         {
             for (int i = calendarLength; i < rewardList.Count; i++)
@@ -89,10 +81,29 @@ public class CalendarUI : MonoBehaviour
             var diff = calendarLength - rewardList.Count;
             for (int i = 0; i < diff; i++)
             {
-                var prefab = Instantiate(rewardPrefab, rewardContainer.transform, false);
+                var prefab = Instantiate(rewardUIPrefab, rewardContainer.transform, false);
                 rewardList.Add(prefab);
             }
         }
+    }
+
+    void AssignLoosePrefabs()
+    {
+        foreach (Transform child in rewardContainer.transform)
+        {
+            var reward = child.GetComponent<DailyRewardUI>();
+            if (reward != null)
+            {
+                rewardList.Add(reward);
+            }
+            else
+                child.gameObject.SetActive(false);
+        }
+    }
+
+    void RemoveEmptyElements()
+    {
+        rewardList.RemoveAll(item => item == null);
     }
 
     void SetRewards()

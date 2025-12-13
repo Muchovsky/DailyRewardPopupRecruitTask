@@ -1,38 +1,40 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameContext : MonoBehaviour
 {
-    [FormerlySerializedAs("calendars")] [Header("Calendar")] [SerializeField] List<CalendarUIBind> calendarsBind;
+    [Header("Calendar")] [SerializeField] List<CalendarUIBind> calendarsBind;
 
     [Header("Currency")] [SerializeField] List<CurrencyUIBind> currencies;
 
 
     SaveService saveService;
+    CalendarSaveService calendarSaveService;
+    CurrencySaveService currencySaveService;
+    EventBus eventBus;
+
 
     void Awake()
     {
         saveService = new SaveService();
-        var currencyController = new CurrencyController(saveService);
+        calendarSaveService = new CalendarSaveService(saveService);
+        currencySaveService = new CurrencySaveService(saveService);
+        eventBus = new EventBus();
 
-        for (int i = 0; i < calendarsBind.Count; i++)
+        foreach (var calendarBind in calendarsBind)
         {
-            var calendarBind = calendarsBind[i];
-            var calendarController = new CalendarController(calendarBind.calendar, saveService);
+            var calendarController = new CalendarController(calendarBind.calendar, calendarSaveService, eventBus);
             calendarBind.view.Construct(calendarController);
             calendarBind.view.Init();
-            calendarBind.button.onClick.AddListener(() => OpenWindow(calendarBind));
-
-            calendarController.OnDayRewardClaim += reward => { currencyController.UpdateCurrencyAmount(reward); };
+            var bind = calendarBind;
+            calendarBind.button.onClick.AddListener(() => OpenWindow(bind));
         }
 
-        for (int i = 0; i < currencies.Count; i++)
+        foreach (var currencyBind in currencies)
         {
-            currencies[i].view.Construct(currencyController, currencies[i].currency);
-            currencies[i].view.Init();
+            var currencyController = new CurrencyController(currencySaveService, currencyBind.view, currencyBind.currency, eventBus);
         }
     }
 

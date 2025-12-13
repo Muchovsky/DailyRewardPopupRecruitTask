@@ -4,51 +4,52 @@ using UnityEngine;
 public class CalendarController
 {
     CalendarDefinition calendarDefinition;
-    SaveService saveService;
-    CalendarState calendarState;
+    CalendarSaveService calendarSaveService;
+    CalendarData calendarData;
+    EventBus eventBus;
     int dayOffset;
 
-    public event Action<Reward> OnDayRewardClaim;
 
-
-    public CalendarController(CalendarDefinition calendarDefinition, SaveService saveService)
+    public CalendarController(CalendarDefinition calendarDefinition, CalendarSaveService calendarSaveService, EventBus eventBus)
     {
         this.calendarDefinition = calendarDefinition;
-        this.saveService = saveService;
+        this.calendarSaveService = calendarSaveService;
+        this.eventBus = eventBus;
         LoadCalendar();
     }
 
     void LoadCalendar()
     {
-        calendarState = saveService.GetCalendarStatus(calendarDefinition.CalendarID);
+        calendarData = calendarSaveService.Load(calendarDefinition.CalendarID);
 
-        if (string.IsNullOrEmpty(calendarState.startDate))
+        if (string.IsNullOrEmpty(calendarData.startDate))
         {
-            calendarState.startDate = calendarDefinition.StartDate ?? DateTime.Today.ToString("dd-MM-yyy");
+            calendarData.startDate = calendarDefinition.StartDate ?? DateTime.Today.ToString("dd-MM-yyy");
 
-            calendarState.lastClaimDate = "";
-            saveService.SetCalendarStatus(calendarState);
+            calendarData.lastClaimDate = "";
+            calendarSaveService.Save(calendarData);
         }
     }
 
     public bool IsDayClaimed(int day)
     {
-        return calendarState.claimedDays.Contains(day);
+        return calendarData.claimedDays.Contains(day);
     }
 
     public void ClaimDay(int day)
     {
         if (!CanClaimDay(day)) return;
-        calendarState.claimedDays.Add(day);
-        calendarState.lastClaimDate = DateTime.Today.ToString("dd-MM-yyy");
-        saveService.SetCalendarStatus(calendarState);
+        calendarData.claimedDays.Add(day);
+        calendarData.lastClaimDate = DateTime.Today.ToString("dd-MM-yyy");
+        calendarSaveService.Save(calendarData);
 
-        OnDayRewardClaim?.Invoke(GetRewardForDay(day));
+
+        eventBus.RewardClaimed(GetRewardForDay(day));
     }
 
     int GetCurrentDayIndex()
     {
-        DateTime start = DateTime.Parse(calendarState.startDate);
+        DateTime start = DateTime.Parse(calendarData.startDate);
         var currentDay = (DateTime.UtcNow.Date - start).Days + dayOffset;
         return Mathf.Clamp(currentDay, 0, calendarDefinition.Duration - 1);
     }

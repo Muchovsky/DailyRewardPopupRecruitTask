@@ -32,7 +32,7 @@ MonoBehaviour:
   - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
     quantity: 231
   - currency: {fileID: 11400000, guid: 95ebe44bbcd89f546bcdccd23478eeb9, type: 2}
-    quantity: 0
+    quantity: 11
   - currency: {fileID: 11400000, guid: 1cfca979738733a4cba7d56aaddbc11c, type: 2}
     quantity: 1
   - currency: {fileID: 11400000, guid: 5a0aa868f8b30fe4290d52b986712b16, type: 2}

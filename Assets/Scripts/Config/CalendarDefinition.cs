@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "CalendarDefinition", menuName = "Scriptable Objects/CalendarDefinition")]
 public class CalendarDefinition : ScriptableObject
 {
     [SerializeField] string calendarID;
     [SerializeField] protected bool customStartDate;
+
     [Tooltip("Day-Month-Year")] [SerializeField]
     string startDate;
+
     [SerializeField] bool disablePastDays;
     [SerializeField] string calendarName;
     [SerializeField] int duration;

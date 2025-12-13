@@ -20,15 +20,13 @@ public class CalendarSaveService
             startDate = saveService.GetString(StartDayKey(calendarID)),
             lastClaimDate = saveService.GetString(LastDayKey(calendarID))
         };
-        string claimedKeys = saveService.GetString(ClaimedKey(calendarID));
+        var claimedKeys = saveService.GetString(ClaimedKey(calendarID));
         if (!string.IsNullOrEmpty(claimedKeys))
         {
-            string[] keys = claimedKeys.Split(',');
-            foreach (string key in keys)
-            {
-                if (int.TryParse(key, out int day))
+            var keys = claimedKeys.Split(',');
+            foreach (var key in keys)
+                if (int.TryParse(key, out var day))
                     cs.claimedDays.Add(day);
-            }
         }
 
         cs.claimedDays.Sort(); // just in case

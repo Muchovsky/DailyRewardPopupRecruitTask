@@ -9,7 +9,7 @@ public class CurrencySaveService
 
     public int Load(string currencyName)
     {
-        return saveService.GetInt(currencyName, 0);
+        return saveService.GetInt(currencyName);
     }
 
     void Save(string currencyName, int value)
@@ -20,7 +20,7 @@ public class CurrencySaveService
 
     public void AddCurrencyAmount(CurrencyNameEnum currencyNameEnum, int increaseBy)
     {
-        string currencyName = currencyNameEnum.ToString();
+        var currencyName = currencyNameEnum.ToString();
         var currentAmount = Load(currencyName);
         var newAmount = currentAmount + increaseBy;
         Save(currencyName, newAmount);

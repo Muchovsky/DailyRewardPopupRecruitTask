@@ -21,6 +21,17 @@ public class CalendarUI : MonoBehaviour
 
     CalendarController calendarController;
 
+    void Start()
+    {
+        SetRewards();
+        StartCoroutine(SetupGrid());
+    }
+
+    void OnDestroy()
+    {
+        foreach (var dailyReward in rewardList) dailyReward.OnClicked -= OnDayClicked;
+    }
+
     public void Construct(CalendarController controller)
     {
         calendarController = controller;
@@ -33,20 +44,14 @@ public class CalendarUI : MonoBehaviour
 
         SetRewardPrefabsList();
 
-        for (int i = 0; i < rewardList.Count; i++)
+        for (var i = 0; i < rewardList.Count; i++)
         {
-            int index = i;
+            var index = i;
             rewardList[i].Init(index);
             rewardList[i].OnClicked += OnDayClicked;
         }
 
         SetButtons();
-    }
-
-    void Start()
-    {
-        SetRewards();
-        StartCoroutine(SetupGrid());
     }
 
     IEnumerator SetupGrid()
@@ -79,7 +84,7 @@ public class CalendarUI : MonoBehaviour
         if (calendarLength > rewardList.Count)
         {
             var diff = calendarLength - rewardList.Count;
-            for (int i = 0; i < diff; i++)
+            for (var i = 0; i < diff; i++)
             {
                 var prefab = Instantiate(rewardUIPrefab, rewardContainer.transform, false);
                 rewardList.Add(prefab);
@@ -93,9 +98,7 @@ public class CalendarUI : MonoBehaviour
         {
             var reward = child.GetComponent<DailyRewardUI>();
             if (reward != null)
-            {
                 rewardList.Add(reward);
-            }
             else
                 child.gameObject.SetActive(false);
         }
@@ -108,16 +111,14 @@ public class CalendarUI : MonoBehaviour
 
     void SetRewards()
     {
-        for (var i = 0; i < calendarController.CalendarLength(); i++)
-        {
+        for (var i = 0; i < calendarController.CalendarLength(); i++) 
             SetReward(i);
-        }
     }
 
     void SetReward(int i)
     {
-        bool claimStatus = calendarController.IsDayClaimed(i);
-        bool canBeClaimed = calendarController.CanClaimDay(i);
+        var claimStatus = calendarController.IsDayClaimed(i);
+        var canBeClaimed = calendarController.CanClaimDay(i);
         var reward = calendarController.GetRewardForDay(i);
         rewardList[i].UpdateView(reward, claimStatus, canBeClaimed);
     }
@@ -155,13 +156,5 @@ public class CalendarUI : MonoBehaviour
         closeButton.onClick.AddListener(CloseWindow);
         nextDayButton.onClick.AddListener(SimulateNextDay);
         restoreButton.onClick.AddListener(RestoreCalendar);
-    }
-
-    void OnDestroy()
-    {
-        foreach (var dailyReward in rewardList)
-        {
-            dailyReward.OnClicked -= OnDayClicked;
-        }
     }
 }

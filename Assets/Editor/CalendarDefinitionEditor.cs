@@ -1,9 +1,6 @@
 using System;
 using System.Globalization;
-using Codice.CM.Common.Tree;
-using Unity.VisualScripting;
 using UnityEditor;
-
 
 [CustomEditor(typeof(CalendarDefinition))]
 public class CalendarDefinitionEditor : Editor
@@ -47,7 +44,7 @@ public class CalendarDefinitionEditor : Editor
         if (calendar.Rewards.Count == 0)
             return;
 
-        for (int i = 0; i < calendar.Rewards.Count; i++)
+        for (var i = 0; i < calendar.Rewards.Count; i++)
         {
             var reward = calendar.Rewards[i];
 

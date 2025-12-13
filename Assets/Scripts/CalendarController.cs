@@ -82,7 +82,7 @@ public class CalendarController
         return calendarDefinition.Duration;
     }
 
-    public Reward GetRewardForDay(int day)
+    public RewardDefinition GetRewardForDay(int day)
     {
         return calendarDefinition.Rewards[day];
     }

@@ -12,7 +12,7 @@ public class CurrencySaveService
         return saveService.GetInt(currencyName, 0);
     }
 
-    public void Save(string currencyName, int value)
+    void Save(string currencyName, int value)
     {
         saveService.SetInt(currencyName, value);
         saveService.Save();
@@ -21,8 +21,8 @@ public class CurrencySaveService
     public void AddCurrencyAmount(CurrencyNameEnum currencyNameEnum, int increaseBy)
     {
         string currencyName = currencyNameEnum.ToString();
-        var currentAmount = saveService.GetInt(currencyName, 0);
+        var currentAmount = Load(currencyName);
         var newAmount = currentAmount + increaseBy;
-        saveService.SetInt(currencyName, newAmount);
+        Save(currencyName, newAmount);
     }
 }

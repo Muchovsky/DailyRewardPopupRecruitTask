@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   calendarID: AC_2025_Hard
   customStartDate: 1
-  startDate: 1-12-2025
+  startDate: 01-12-2025
   disablePastDays: 1
   calendarName: Advent Calendar
   duration: 24

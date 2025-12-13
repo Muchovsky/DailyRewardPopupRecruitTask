@@ -21,7 +21,7 @@ public class DailyRewardUI : MonoBehaviour
         dayLabel.text = $"Day {(day + 1).ToString()}";
     }
 
-    public void UpdateView(Reward pair, bool claimStatus, bool canBeClaimed)
+    public void UpdateView(RewardDefinition pair, bool claimStatus, bool canBeClaimed)
     {
         claimedImage.gameObject.SetActive(claimStatus);
         rewardImage.sprite = pair.Currency.Sprite;

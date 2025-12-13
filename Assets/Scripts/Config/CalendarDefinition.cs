@@ -7,19 +7,16 @@ using UnityEngine;
 public class CalendarDefinition : ScriptableObject
 {
     [SerializeField] string calendarID;
-    [SerializeField] bool customStartDate;
-
+    [SerializeField] protected bool customStartDate;
     [Tooltip("Day-Month-Year")] [SerializeField]
     string startDate;
-
     [SerializeField] bool disablePastDays;
-
     [SerializeField] string calendarName;
     [SerializeField] int duration;
-    [SerializeField] List<Reward> rewards;
+    [SerializeField] List<RewardDefinition> rewards;
 
     public string CalendarID => calendarID;
-    public List<Reward> Rewards => rewards;
+    public List<RewardDefinition> Rewards => rewards;
     public int Duration => duration;
     public string StartDate => startDate;
     public bool DisablePastDays => disablePastDays;
@@ -28,7 +25,7 @@ public class CalendarDefinition : ScriptableObject
     {
         while (rewards.Count < duration)
         {
-            rewards.Add(new Reward());
+            rewards.Add(new RewardDefinition());
         }
 
         while (rewards.Count > duration)

@@ -2,10 +2,10 @@ using System;
 
 public class EventBus
 {
-    public event Action<Reward> OnRewardClaimed;
+    public event Action<RewardDefinition> OnRewardClaimed;
 
-    public void RewardClaimed(Reward reward)
+    public void RewardClaimed(RewardDefinition rewardDefinition)
     {
-        OnRewardClaimed?.Invoke(reward);
+        OnRewardClaimed?.Invoke(rewardDefinition);
     }
 }

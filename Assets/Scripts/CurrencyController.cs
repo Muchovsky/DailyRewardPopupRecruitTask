@@ -21,12 +21,12 @@ public class CurrencyController
         return currencySaveService.Load(currencyName);
     }
 
-    void OnRewardClaimed(Reward reward)
+    void OnRewardClaimed(RewardDefinition rewardDefinition)
     {
-        if (reward.Currency.CurrencyName != currencyDefinition.CurrencyName)
+        if (rewardDefinition.Currency.CurrencyName != currencyDefinition.CurrencyName)
             return;
 
-        AddCurrency(reward.Quantity);
+        AddCurrency(rewardDefinition.Quantity);
     }
 
 

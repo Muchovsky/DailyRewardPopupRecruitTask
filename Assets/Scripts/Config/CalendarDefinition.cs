@@ -6,7 +6,7 @@ using UnityEngine;
 public class CalendarDefinition : ScriptableObject
 {
     [SerializeField] string calendarID;
-    [SerializeField] protected bool customStartDate;
+    [SerializeField] bool customStartDate;
 
     [Tooltip("Day-Month-Year")] [SerializeField]
     string startDate;
@@ -21,6 +21,7 @@ public class CalendarDefinition : ScriptableObject
     public int Duration => duration;
     public string StartDate => startDate;
     public bool DisablePastDays => disablePastDays;
+    public bool CustomStartDate => customStartDate;
 
     void OnValidate()
     {

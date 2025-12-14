@@ -7,9 +7,9 @@ public class SaveService
         PlayerPrefs.SetString(key, value);
     }
 
-    public string GetString(string key, string defaultValue = "")
+    public string GetString(string key)
     {
-        return PlayerPrefs.GetString(key, defaultValue);
+        return PlayerPrefs.GetString(key);
     }
 
     public void SetInt(string key, int value)
@@ -19,7 +19,7 @@ public class SaveService
 
     public int GetInt(string key, int defaultValue = 0)
     {
-        return PlayerPrefs.GetInt(key, defaultValue);
+        return PlayerPrefs.GetInt(key);
     }
 
     public void Save()

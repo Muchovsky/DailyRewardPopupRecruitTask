@@ -22,6 +22,7 @@ public class CalendarDefinition : ScriptableObject
     public string StartDate => startDate;
     public bool DisablePastDays => disablePastDays;
     public bool CustomStartDate => customStartDate;
+    public string CalendarName => calendarName;
 
     void OnValidate()
     {

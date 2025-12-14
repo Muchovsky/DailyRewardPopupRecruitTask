@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -7,11 +8,9 @@ using UnityEngine.UI;
 public class CalendarUI : MonoBehaviour
 {
     [SerializeField] Button closeButton;
+    [SerializeField] TextMeshProUGUI calendarName;
     [SerializeField] List<DailyRewardUI> rewardList;
-
-    [FormerlySerializedAs("rewardPrefab")] [SerializeField]
-    DailyRewardUI rewardUIPrefab;
-
+    [SerializeField] DailyRewardUI rewardUIPrefab;
     [SerializeField] GameObject rewardContainer;
     [SerializeField] GridLayoutGroup gridLayoutGroup;
     [SerializeField] ContentSizeFitter contentSizeFitter;
@@ -25,6 +24,7 @@ public class CalendarUI : MonoBehaviour
     {
         SetRewards();
         StartCoroutine(SetupGrid());
+        SetCalendarName();
     }
 
     void OnDestroy()
@@ -111,7 +111,7 @@ public class CalendarUI : MonoBehaviour
 
     void SetRewards()
     {
-        for (var i = 0; i < calendarController.CalendarLength(); i++) 
+        for (var i = 0; i < calendarController.CalendarLength(); i++)
             SetReward(i);
     }
 
@@ -121,6 +121,11 @@ public class CalendarUI : MonoBehaviour
         var canBeClaimed = calendarController.CanClaimDay(i);
         var reward = calendarController.GetRewardForDay(i);
         rewardList[i].UpdateView(reward, claimStatus, canBeClaimed);
+    }
+
+    void SetCalendarName()
+    {
+        calendarName.text = calendarController.GetCalendarName();
     }
 
     void OnDayClicked(int day)

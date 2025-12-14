@@ -381,6 +381,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1246698135441649844, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322445504210857896, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322445504210857896, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369371291078046093, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369371291078046093, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3410264144394824933, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -461,10 +481,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4593618793523922954, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
-      propertyPath: rewardPrefab
-      value: 
-      objectReference: {fileID: 7667696868452718741, guid: 09763912edd7c2a49856e0778c7444b6, type: 3}
+    - target: {fileID: 7591579661891999957, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591579661891999957, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.04888889
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591579661891999957, guid: a2606b4e29155e549b9e4dec2c81c2b3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -564,11 +592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721420900716072305, guid: f88a281cd69b98445bf899cf7e0f744b, type: 3}
       propertyPath: m_text
-      value: Advent Callendar Hard
+      value: Advent Calendar Hard
       objectReference: {fileID: 0}
     - target: {fileID: 4721420900716072305, guid: f88a281cd69b98445bf899cf7e0f744b, type: 3}
       propertyPath: m_fontSize
-      value: 44.9
+      value: 45.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2115,7 +2143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721420900716072305, guid: f88a281cd69b98445bf899cf7e0f744b, type: 3}
       propertyPath: m_text
-      value: Advent Callendar
+      value: Advent Calendar
       objectReference: {fileID: 0}
     - target: {fileID: 4721420900716072305, guid: f88a281cd69b98445bf899cf7e0f744b, type: 3}
       propertyPath: m_fontSize

@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 3699556331368083590}
   - component: {fileID: 4538302325888158868}
   m_Layer: 5
-  m_Name: DailyReward
+  m_Name: DailyRewardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

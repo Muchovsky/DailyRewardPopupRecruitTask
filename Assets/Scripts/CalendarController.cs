@@ -98,4 +98,9 @@ public class CalendarController
     {
         dayOffset = 0;
     }
+
+    public string GetCalendarName()
+    {
+       return calendarDefinition.CalendarName;
+    }
 }

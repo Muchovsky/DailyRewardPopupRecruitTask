@@ -18,16 +18,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 701896448235150974, guid: 743083fb558ff8f46bde49f0959165f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 964
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 768654755395453282, guid: 743083fb558ff8f46bde49f0959165f3, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2271143032456371402, guid: 743083fb558ff8f46bde49f0959165f3, type: 3}
       propertyPath: m_Name
       value: DailyRewardWindowUI Week
       objectReference: {fileID: 0}
+    - target: {fileID: 2618889089116256732, guid: 743083fb558ff8f46bde49f0959165f3, type: 3}
+      propertyPath: rewardUIPrefab
+      value: 
+      objectReference: {fileID: 7667696868452718741, guid: 09763912edd7c2a49856e0778c7444b6, type: 3}
     - target: {fileID: 3183474069782568835, guid: 743083fb558ff8f46bde49f0959165f3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

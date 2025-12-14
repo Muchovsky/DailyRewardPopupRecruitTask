@@ -33,10 +33,12 @@ Po uruchomieniu kalendarza podświetlone zostają możliwe do odebrania nagrody.
 Nagrody odbierane są po naciśnięciu na konkretny dzień.
 
 W prawym dolnym rogu okna kalendarza umieszczone są dwa przyciski:
-* Simulate Next Day - symuluje upływ dnia, dając możliwość odebrania kolejnej nagrody.
+* Simulate Next Day - symuluje upływ dnia, dając możliwość odebrania kolejnej nagrody w danym kalendarzu.
 * RestoreCalendar - przywraca kalendarz do stanu właściwego 
 
-Przyciski te widoczne są jeśli gra jest uruchomiona w Edytorze lub jeśli został ustawiony Scripting Define Symbol TEST_BUILD
+Przyciski te widoczne są jeśli gra jest uruchomiona w Edytorze lub jeśli został ustawiony Scripting Define Symbol TEST_BUILD.
+
+Ponowne uruchomienie gry resetuje symulacje upływu dni.
 
 Odebrane nagrody nie mogą, zostać odebrane ponownie i zostają oznaczone grafiką ✓.
 
